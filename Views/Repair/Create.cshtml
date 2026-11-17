@@ -1,0 +1,15 @@
+@model RepairRequest
+@{ ViewData["Title"] = "New repair request"; }
+<div class="auth-wrap"><div class="auth-card auth-card-wide"><div class="eyebrow">REPAIR INTAKE / 01</div><h2>Tell us what's <em>going on.</em></h2><p class="muted">Share a few details about your phone and we'll prepare an initial estimate.</p>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+    <div class="row g-3">
+        <div class="col-md-6"><label asp-for="PhoneBrand" class="form-label"></label><select asp-for="PhoneBrand" class="form-select"><option value="">Select brand</option>@foreach(var b in new[]{"Apple","Samsung","Google","Xiaomi","Oppo","Vivo","OnePlus","Other"}){<option>@b</option>}</select><span asp-validation-for="PhoneBrand" class="text-danger small"></span></div>
+        <div class="col-md-6"><label asp-for="PhoneModel" class="form-label"></label><input asp-for="PhoneModel" class="form-control" placeholder="e.g. iPhone 13 Pro"/><span asp-validation-for="PhoneModel" class="text-danger small"></span></div>
+        <div class="col-12"><label asp-for="RepairServiceId" class="form-label">What needs attention?</label><select asp-for="RepairServiceId" asp-items="ViewBag.RepairServiceId" class="form-select"><option value="">Choose a repair service</option></select><span asp-validation-for="RepairServiceId" class="text-danger small"></span></div>
+        <div class="col-12"><label asp-for="ProblemDescription" class="form-label"></label><textarea asp-for="ProblemDescription" rows="4" class="form-control" placeholder="Describe the symptoms, damage or when the issue started..."></textarea><span asp-validation-for="ProblemDescription" class="text-danger small"></span></div>
+    </div>
+    <div class="estimate-note mt-4"><i class="bi bi-info-circle"></i><span><b>About your estimate</b><small>The displayed estimate is based on the selected service's base price. Final pricing may change after technician diagnosis and customer approval.</small></span></div>
+    <button class="btn btn-brand btn-lg w-100 mt-4">Submit repair request <i class="bi bi-arrow-right ms-2"></i></button>
+</form></div></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

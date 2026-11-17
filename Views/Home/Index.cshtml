@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Smart phone repair";
+}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="pulse"></span> YOUR DEVICE, OUR PRIORITY</div>
+            <h1>Broken phone?<br><em>We make it right.</em></h1>
+            <p class="hero-lead">Book a trusted repair, get a clear cost estimate, and follow every step — all in one place.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+                <a class="btn btn-brand btn-lg" asp-controller="Account" asp-action="Register">Book a repair <i class="bi bi-arrow-up-right ms-2"></i></a>
+                <a class="btn btn-ghost btn-lg" asp-controller="Account" asp-action="Login">Track a repair</a>
+            </div>
+            <div class="hero-proof"><span><i class="bi bi-check-circle-fill"></i> Transparent estimates</span><span><i class="bi bi-shield-check"></i> Clear repair updates</span></div>
+        </div>
+        <div class="hero-visual">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="phone-card"><div class="phone-camera"></div><div class="phone-screen"><div class="screen-top">PHONECARE <i class="bi bi-three-dots"></i></div><div class="screen-icon"><i class="bi bi-phone"></i></div><div class="screen-caption">Back to better.</div><div class="screen-sub">Your repair journey starts here.</div><div class="screen-progress"><span></span></div><small>REPAIR EXPERIENCE</small></div></div>
+            <div class="float-tag tag-top"><i class="bi bi-check2-circle"></i><span><b>Quality first</b><small>Care at every step</small></span></div>
+            <div class="float-tag tag-bottom"><i class="bi bi-currency-rupee"></i><span><b>Clear estimates</b><small>No surprise pricing</small></span></div>
+            <div class="hero-spark">✳</div>
+        </div>
+    </div>
+</section>
+<section class="trust-strip"><div class="container trust-items"><span><i class="bi bi-tools"></i> Expert repair workflow</span><span><i class="bi bi-receipt"></i> Upfront cost estimates</span><span><i class="bi bi-clipboard2-check"></i> Live status tracking</span><span><i class="bi bi-headset"></i> Customer-first service</span></div></section>
+<section class="section-pad" id="services">
+    <div class="container">
+        <div class="section-heading"><div><div class="eyebrow">WHAT WE CAN FIX</div><h2>Repair services, <em>made simple.</em></h2></div><p>Choose the issue you're facing. We'll help you take the next step with a transparent estimate.</p></div>
+        <div class="row g-3 mt-3">
+            <div class="col-md-4"><div class="service-card"><div class="service-icon"><i class="bi bi-phone"></i></div><h5>Screen replacement</h5><p>Cracked glass, display lines or an unresponsive touch screen.</p><span>01 / DISPLAY</span></div></div>
+            <div class="col-md-4"><div class="service-card"><div class="service-icon"><i class="bi bi-battery-charging"></i></div><h5>Battery replacement</h5><p>Fast battery drain, unexpected shutdowns or charging trouble.</p><span>02 / POWER</span></div></div>
+            <div class="col-md-4"><div class="service-card"><div class="service-icon"><i class="bi bi-usb-plug"></i></div><h5>Charging port repair</h5><p>Loose connectors, slow charging or a device that won't charge.</p><span>03 / CONNECTIVITY</span></div></div>
+        </div>
+        <div class="cta-band mt-4"><div><div class="eyebrow">READY WHEN YOU ARE</div><h3>Let's get your phone back in action.</h3></div><a class="btn btn-light rounded-pill px-4" asp-controller="Account" asp-action="Register">Create your account <i class="bi bi-arrow-up-right ms-2"></i></a></div>
+    </div>
+</section>

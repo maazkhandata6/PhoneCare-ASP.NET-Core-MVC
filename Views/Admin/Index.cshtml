@@ -1,0 +1,16 @@
+@model IEnumerable<RepairRequest>
+@{ ViewData["Title"] = "Admin dashboard"; }
+<div class="dashboard-shell"><div class="container">
+    <div class="dash-heading"><div><div class="eyebrow">PHONECARE / CONTROL CENTER</div><h1>Good day, <em>Administrator.</em></h1><p class="muted">A live overview of your repair operation.</p></div><a class="btn btn-brand" asp-action="Requests"><i class="bi bi-list-check me-2"></i>Manage requests</a></div>
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-xl"><div class="metric-card"><div class="metric-top"><span>Customers</span><i class="bi bi-people"></i></div><div class="metric-number">@ViewBag.CustomerCount</div><small>Registered customers</small></div></div>
+        <div class="col-6 col-xl"><div class="metric-card metric-purple"><div class="metric-top"><span>Requests</span><i class="bi bi-clipboard-data"></i></div><div class="metric-number">@ViewBag.RequestCount</div><small>Total repair requests</small></div></div>
+        <div class="col-6 col-xl"><div class="metric-card metric-orange"><div class="metric-top"><span>Pending</span><i class="bi bi-hourglass-split"></i></div><div class="metric-number">@ViewBag.PendingCount</div><small>Need attention</small></div></div>
+        <div class="col-6 col-xl"><div class="metric-card metric-green"><div class="metric-top"><span>Completed</span><i class="bi bi-check-circle"></i></div><div class="metric-number">@ViewBag.CompletedCount</div><small>Successfully repaired</small></div></div>
+        <div class="col-12 col-xl"><div class="metric-card metric-dark"><div class="metric-top"><span>Completed value</span><i class="bi bi-wallet2"></i></div><div class="metric-number compact">PKR @(((decimal)ViewBag.Revenue).ToString("N0"))</div><small>Based on completed estimates</small></div></div>
+    </div>
+    <div class="panel"><div class="panel-head"><div><h4>Recent repair requests</h4><p>Review new work and update repair progress.</p></div><a class="table-link" asp-action="Requests">View all <i class="bi bi-arrow-up-right"></i></a></div>
+    @if (!Model.Any()) { <div class="empty-state"><i class="bi bi-inbox"></i><h5>Nothing in the queue</h5><p>New customer repair requests will appear here.</p></div> }
+    else { <div class="table-responsive"><table class="table align-middle"><thead><tr><th>REQUEST</th><th>CUSTOMER</th><th>DEVICE</th><th>SERVICE</th><th>ESTIMATE</th><th>STATUS</th><th></th></tr></thead><tbody>@foreach(var r in Model){<tr><td><b>#PC-@r.Id.ToString("D4")</b><small class="d-block muted">@r.CreatedAt.ToLocalTime().ToString("dd MMM")</small></td><td>@r.Customer?.FullName</td><td>@r.PhoneBrand @r.PhoneModel</td><td>@r.RepairService?.Name</td><td>PKR @r.EstimatedCost.ToString("N0")</td><td><span class="status status-@r.Status.ToLower().Replace(" ","-")">@r.Status</span></td><td><a class="table-link" asp-controller="Repair" asp-action="Details" asp-route-id="@r.Id">Open</a></td></tr>}</tbody></table></div> }
+    </div>
+</div></div>

@@ -1,0 +1,14 @@
+@model IEnumerable<RepairRequest>
+@{ ViewData["Title"] = "My dashboard"; }
+<div class="dashboard-shell"><div class="container">
+    <div class="dash-heading"><div><div class="eyebrow">CUSTOMER SPACE</div><h1>Good to see you, <em>@Context.Session.GetString("UserName")?.Split(' ')[0].</em></h1><p class="muted">Here's the latest on your device repairs.</p></div><a class="btn btn-brand" asp-controller="Repair" asp-action="Create"><i class="bi bi-plus-lg me-2"></i>New repair request</a></div>
+    <div class="row g-3 mb-4">
+        <div class="col-md-4"><div class="metric-card"><div class="metric-top"><span>Total requests</span><i class="bi bi-clipboard2-pulse"></i></div><div class="metric-number">@ViewBag.Total</div><small>All your repair requests</small></div></div>
+        <div class="col-md-4"><div class="metric-card metric-purple"><div class="metric-top"><span>In progress</span><i class="bi bi-arrow-repeat"></i></div><div class="metric-number">@ViewBag.Active</div><small>Currently being handled</small></div></div>
+        <div class="col-md-4"><div class="metric-card metric-green"><div class="metric-top"><span>Completed</span><i class="bi bi-check2-circle"></i></div><div class="metric-number">@ViewBag.Completed</div><small>Repairs completed</small></div></div>
+    </div>
+    <div class="panel"><div class="panel-head"><div><h4>Your repair history</h4><p>Follow the progress of every request.</p></div><span class="soft-label">LATEST ACTIVITY</span></div>
+    @if (!Model.Any()) { <div class="empty-state"><i class="bi bi-phone"></i><h5>No repairs yet</h5><p>When you submit a repair request, it will appear here.</p><a class="btn btn-brand" asp-controller="Repair" asp-action="Create">Book your first repair</a></div> }
+    else { <div class="table-responsive"><table class="table align-middle"><thead><tr><th>REQUEST</th><th>DEVICE</th><th>SERVICE</th><th>ESTIMATE</th><th>STATUS</th><th></th></tr></thead><tbody>@foreach(var r in Model){<tr><td><b>#PC-@r.Id.ToString("D4")</b><small class="d-block muted">@r.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</small></td><td>@r.PhoneBrand @r.PhoneModel</td><td>@r.RepairService?.Name</td><td>PKR @r.EstimatedCost.ToString("N0")</td><td><span class="status status-@r.Status.ToLower().Replace(" ","-")">@r.Status</span></td><td><a class="table-link" asp-controller="Repair" asp-action="Details" asp-route-id="@r.Id">Details <i class="bi bi-arrow-up-right"></i></a></td></tr>}</tbody></table></div> }
+    </div>
+</div></div>

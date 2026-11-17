@@ -1,0 +1,5 @@
+@model IEnumerable<RepairService>
+@{ ViewData["Title"] = "Services & pricing"; }
+<div class="dashboard-shell"><div class="container"><div class="dash-heading"><div><div class="eyebrow">SERVICE CATALOG</div><h1>Services & <em>pricing.</em></h1><p class="muted">Maintain the base estimate shown to customers.</p></div><a class="btn btn-outline-secondary rounded-pill" asp-action="Index">Dashboard</a></div>
+<div class="panel"><div class="table-responsive"><table class="table align-middle"><thead><tr><th>SERVICE</th><th>DESCRIPTION</th><th>ESTIMATED TIME</th><th>BASE PRICE (PKR)</th><th></th></tr></thead><tbody>@foreach(var s in Model){<tr><td><b>@s.Name</b></td><td>@s.Description</td><td>@s.EstimatedHours hours</td><td><form asp-action="UpdatePrice" method="post" class="d-flex gap-2"><input type="hidden" name="id" value="@s.Id"/><input name="basePrice" type="number" min="0" step="100" value="@s.BasePrice" class="form-control form-control-sm price-input"/><button class="btn btn-sm btn-dark">Update</button></form></td><td><span class="status status-completed">@(s.IsActive ? "Active" : "Inactive")</span></td></tr>}</tbody></table></div></div>
+</div></div>
