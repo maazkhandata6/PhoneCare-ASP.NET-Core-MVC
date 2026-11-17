@@ -18,4 +18,23 @@ If you already ran the earlier starter package, `EnsureCreated()` will not add n
 ## Academic limitations
 This is an extended academic project baseline, not a production commercial system. Build and test it locally before submission. Session-based authentication is simplified for classroom demonstration; production should use ASP.NET Core Identity, robust authorization, audit logs, rate limiting and secrets management. Payment records are manually entered; no real payment gateway is connected. Prices are illustrative PKR base estimates, not guaranteed final quotes. Phone catalog currently supports adding brands/models; edit/delete CRUD and more advanced diagnostic logic can be future enhancements.
 
+
+## Screenshots
+
+### 1. Home Page
+![PhoneCare Home Page](homepage.png.png)
+
+### 2. Customer Dashboard
+![Customer Dashboard](customer-dashboard.png.png)
+
+### 3. Repair Request Form
+![Repair Request Form](customer-request.png.png)
+
+### 4. Customer Repair History
+![Customer Repair History](customer-after-request.png.png)
+
+### 5. Admin Dashboard
+![Admin Dashboard](admin-dashboard.png.png)
+
+
  
